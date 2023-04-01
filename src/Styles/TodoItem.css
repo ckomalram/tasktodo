@@ -22,14 +22,18 @@ li {
   
   li span:last-of-type {
     font-size: 20px;
-    color: #ff0000;
+    color: #3d3c32;
     cursor: pointer;
     margin-left: 10px;
   }
 
-  .txt-p{
-    font-size: larger;
+  li span:last-of-type:hover {
+    font-size: 25px;
+    color: #f00400;
+    cursor: pointer;
+    margin-left: 10px;
   }
+ 
   .complete{
     color: #45de12;
   }

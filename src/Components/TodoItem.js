@@ -7,7 +7,7 @@ function TodoItem(props) {
         <span className={`${props.completed ? 'task-complete' : 'task-pending'}`}>
           {props.completed ? 'C' : 'P'}
           </span>
-        <p className={`${props.completed ? 'complete' : ''}`}>{props.text}</p>
+        <p >{props.text}</p>
         <span>X</span>
       </li>
     );
