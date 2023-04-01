@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {TodoCounter} from './Components/TodoCounter';
 import { TodoItem } from './Components/TodoItem';
