@@ -5,7 +5,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(66, 33, 186, 0.2);
+    padding: 20px;
+    text-align: center; /* Alineación centrada */
+} 
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

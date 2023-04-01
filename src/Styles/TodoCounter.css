@@ -1,0 +1,8 @@
+.header {
+    font-size: 24px; /* Tamaño de fuente */
+    font-weight: bold; /* Grosor de la fuente */
+    color: #333; /* Color del texto */
+    margin-top: 20px; /* Espacio superior */
+    margin-bottom: 20px; /* Espacio inferior */
+    text-align: center;
+  }

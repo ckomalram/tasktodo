@@ -1,0 +1,31 @@
+input  {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  width: 50%; /* Ancho del 100% del contenedor */
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho del input */
+  display: inline-block; /* Alineación en línea con los demás elementos */
+  text-align: left; /* Ajuste para el texto en el input */
+  }
+
+  /* Media Queries para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+ 
+  
+  /* Estilos para el input de búsqueda en pantallas pequeñas */
+  input[placeholder] {
+    margin-bottom: 10px; /* Menor margen inferior para pantallas pequeñas */
+  }
+}
+
+/* Media Queries para pantallas más grandes */
+@media screen and (min-width: 769px) {
+ 
+  /* Estilos para el input de búsqueda en pantallas grandes */
+  input[placeholder] {
+    margin-bottom: 30px; /* Mayor margen inferior para pantallas grandes */
+  }
+}

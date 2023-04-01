@@ -1,0 +1,14 @@
+<div>
+    <h2 className="header">Haz completado 1 de 3 TODO</h2>
+    <input placeholder="Buscar..." type="text" autoComplete="off"/>
+    <section>
+        <ul>
+            <li>
+                <span>C</span>
+                <p>texto</p>
+                <span>X</span>
+              </li>
+        </ul>
+      </section>
+      <button>Add</button>
+</div>
