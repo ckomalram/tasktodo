@@ -10,7 +10,8 @@ function useLocalStorage(itemName, initialValue) {
 
   React.useEffect(
     () => {
-      setTimeout(() => {
+      console.log('Carga inicial de LS###');
+      // setTimeout(() => {
 
         try {
           // Storages
@@ -30,12 +31,8 @@ function useLocalStorage(itemName, initialValue) {
         } catch (error) {
           setError(error);
         }
-
-        
-
-
-      }, 1000);
-    }
+      // }, 1000);
+    }, []
   );
 
 

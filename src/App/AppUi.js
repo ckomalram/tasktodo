@@ -5,40 +5,37 @@ import { TodoItem } from '../Components/TodoItem';
 import { TodoSearch } from '../Components/TodoSearch';
 import { TodoList } from '../Components/TodoList';
 import { TodoButton } from '../Components/TodoButton';
+import { TodoContext } from '../Context';
 
-function AppUi({
-    completedTasks,
-    totalTasks,
-    searchedTasks,
-    searchvalue,
-    setSearchvalue,
-    completeTask,
-    deleteTask,
-    addTasks,
-    loading,
-    error
-}) {
+function AppUi() {
     return (
 
         <React.Fragment>
-            <TodoCounter completedTasks={completedTasks} total={totalTasks} />
-            <TodoSearch
-                searchvalue={searchvalue}
-                setSearchvalue={setSearchvalue}
-            />
-            <TodoList>
-                {error && <p>Ocurrio un error...</p>}
-                {loading && <p>Estamos cargando....</p>}
-                {(!loading && !searchedTasks.length ) && <p>Crea tu primer TASK</p>}
-                {searchedTasks.map(task => (
-                    <TodoItem
-                        key={task.text} text={task.text} completed={task.completed}
-                        onComplete={() => completeTask(task.text)}
-                        onDelete={() => deleteTask(task.text)}
-                    />
-                ))}
-            </TodoList>
-            <TodoButton onAddTasks={() => addTasks()} />
+            <TodoCounter />
+            <TodoSearch />
+            <TodoContext.Consumer>
+                {({ error,
+                    loading,
+                    searchedTasks,
+                    completeTask,
+                    deleteTask
+                }) => (
+                    <TodoList>
+                        {error && <p>Ocurrio un error...</p>}
+                        {loading && <p>Estamos cargando....</p>}
+                        {(!loading && !searchedTasks.length) && <p>Crea tu primer TASK</p>}
+                        {searchedTasks.map(task => (
+                            <TodoItem
+                                key={task.text} text={task.text} completed={task.completed}
+                                onComplete={() => completeTask(task.text)}
+                                onDelete={() => deleteTask(task.text)}
+                            />
+                        ))}
+                    </TodoList>
+
+                )}
+            </TodoContext.Consumer>
+            <TodoButton onAddTasks={() => console.log('Agregando tasks')} />
         </React.Fragment>
 
     );
