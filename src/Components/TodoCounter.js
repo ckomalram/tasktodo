@@ -8,8 +8,8 @@ const estilos = {
 
 };
 
-function TodoCounter() {
-  const {totalTasks, completedTasks} = React.useContext(TodoContext);
+function TodoCounter({totalTasks, completedTasks}) {
+  // const {totalTasks, completedTasks} = React.useContext(TodoContext);
   return (
     <h2 className="header">Haz completado {completedTasks} de {totalTasks} TODO</h2>
   );
