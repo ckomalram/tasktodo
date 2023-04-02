@@ -13,7 +13,8 @@ function AppUi({
     searchvalue,
     setSearchvalue,
     completeTask,
-    deleteTask
+    deleteTask,
+    addTasks
 }) {
     return (
 
@@ -32,7 +33,7 @@ function AppUi({
                     />
                 ))}
             </TodoList>
-            <TodoButton />
+            <TodoButton onAddTasks={() => addTasks()} />
         </React.Fragment>
 
     );

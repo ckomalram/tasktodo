@@ -1,9 +1,10 @@
 import React from "react";
 import '../Styles/TodoButton.css'
 
-function TodoButton() {
+function TodoButton(props) {
     const onClickAdd = () => {
-        alert('Abrir modal de ADD...');
+        // alert('Abrir modal de ADD...');
+        props.onAddTasks();
     };
 
     return (

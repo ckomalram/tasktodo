@@ -12,9 +12,23 @@ const defaultTasks = [
 
 function App() {
 
+  // Storages
+  const localStorageTasks = localStorage.getItem('TASKS_V1');
+
+  let parseTasks;
+
+  if (!localStorageTasks) {
+    console.log('Rellenar LS con array vacio');
+    localStorage.setItem('TASKS_V1', JSON.stringify([]));
+    parseTasks=[];
+  }else{
+    parseTasks = JSON.parse(localStorageTasks);
+  }
+
+
   // States
   const [searchvalue, setSearchvalue] = React.useState('');
-  const [tasks, setTasks] = React.useState(defaultTasks);
+  const [tasks, setTasks] = React.useState(parseTasks);
 
   //Variables
   const completedTasks = tasks.filter(task => task.completed).length;
@@ -37,12 +51,18 @@ function App() {
   }
 
   //Function to events
+  const saveTasks = (newTasks) => {
+    const stringTasks = JSON.stringify(newTasks);
+    localStorage.setItem('TASKS_V1', stringTasks);
+    setTasks(newTasks);
+  }
+
   const completeTask = (text) => {
     const index = tasks.findIndex(task => task.text === text);
 
     const newTasks = [...tasks];
     newTasks[index].completed = true;
-    setTasks(newTasks);
+    saveTasks(newTasks);
     // tasks[index] =  { text: tasks[index].text, completed: true };
   }
 
@@ -51,8 +71,13 @@ function App() {
 
     const newTasks = [...tasks];
     newTasks.splice(index, 1);
-    setTasks(newTasks);
+    saveTasks(newTasks);
     // tasks[index] =  { text: tasks[index].text, completed: true };
+  }
+
+  //Funcion temporal...
+  const addTasks = () => {
+    saveTasks(defaultTasks);
   }
 
   return (
@@ -64,6 +89,7 @@ function App() {
     setSearchvalue={setSearchvalue}
     completeTask={completeTask}
     deleteTask={deleteTask}
+    addTasks={addTasks}
     />
   );
 }

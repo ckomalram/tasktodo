@@ -4,7 +4,7 @@ import '../Styles/TodoItem.css'
 function TodoItem(props) {
 
   const onComplete = () => {
-    alert('Se completo el TODO ' + props.text);
+    // alert('Se completo el TODO ' + props.text);
     props.onComplete();
   }
 
