@@ -1,9 +1,8 @@
 import React from "react";
 import '../Styles/TodoSearch.css';
 
-function TodoSearch() {
+function TodoSearch({searchvalue, setSearchvalue}) {
 
-  const [searchvalue, setSearchvalue] = React.useState('');
 
   const onSearchValueChange = (event) => {
     // console.log(event.target.value);

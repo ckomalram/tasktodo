@@ -7,9 +7,9 @@ const estilos = {
 
 };
 
-function TodoCounter() {
+function TodoCounter({total, completedTasks}) {
   return (
-    <h2 className="header">Haz completado 1 de 3 TODO</h2>
+    <h2 className="header">Haz completado {completedTasks} de {total} TODO</h2>
   );
 }
 
