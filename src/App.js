@@ -42,6 +42,24 @@ function App() {
     })
   }
 
+  const completeTask = (text) => {
+    const index = tasks.findIndex(task => task.text === text);
+
+    const newTasks = [...tasks];
+    newTasks[index].completed = true;
+    setTasks(newTasks);
+    // tasks[index] =  { text: tasks[index].text, completed: true };
+  }
+
+  const deleteTask = (text) => {
+    const index = tasks.findIndex(task => task.text === text);
+
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
+    // tasks[index] =  { text: tasks[index].text, completed: true };
+  }
+
   return (
     <React.Fragment>
       <TodoCounter completedTasks={completedTasks} total={totalTasks} />
@@ -51,7 +69,11 @@ function App() {
       />
       <TodoList>
         {searchedTasks.map(task => (
-          <TodoItem key={task.text} text={task.text} completed={task.completed} />
+          <TodoItem
+            key={task.text} text={task.text} completed={task.completed}
+            onComplete={() => completeTask(task.text)}
+            onDelete={() => deleteTask(task.text)}
+          />
         ))}
       </TodoList>
       <TodoButton />

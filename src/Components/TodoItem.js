@@ -5,10 +5,12 @@ function TodoItem(props) {
 
   const onComplete = () => {
     alert('Se completo el TODO ' + props.text);
+    props.onComplete();
   }
 
   const onDelete = () => {
-    alert('Borraste el TODO ' + props.text);
+    // alert('Borraste el TODO ' + props.text);
+    props.onDelete();
   }
   return (
     <li>
