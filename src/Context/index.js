@@ -19,7 +19,7 @@ const TodoContext = React.createContext();
 function TodoProvider(props) {
   // custom hook useLocalStorage
   // Cuando se va retornar más de 1 esdo y 1 metodo en el custom hook se recomienda usar objetos
-  const { items: tasks, saveItems: setTasks, loading, error } = useLocalStorage('TASKS_V1', []);
+  const { items: tasks, saveItems: setTasks, loading, error } = useLocalStorage('TASKS_V1', defaultTasks);
 
 
   // States
