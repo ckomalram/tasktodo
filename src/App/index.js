@@ -1,10 +1,6 @@
 import React from 'react';
 import './App.css';
-import { TodoCounter } from './Components/TodoCounter';
-import { TodoItem } from './Components/TodoItem';
-import { TodoSearch } from './Components/TodoSearch';
-import { TodoList } from './Components/TodoList';
-import { TodoButton } from './Components/TodoButton';
+import { AppUi } from './AppUi';
 
 const defaultTasks = [
   { text: 'Cortar cebolla', completed: false },
@@ -13,22 +9,20 @@ const defaultTasks = [
   { text: 'Comer', completed: true },
   { text: 'Cocinar', completed: false },
 ];
-/**
- * todo counter
- * todo search
- * todo list
- * todo item
- * todo create btn
- */
+
 function App() {
 
+  // States
   const [searchvalue, setSearchvalue] = React.useState('');
   const [tasks, setTasks] = React.useState(defaultTasks);
+
+  //Variables
   const completedTasks = tasks.filter(task => task.completed).length;
   const totalTasks = tasks.length;
-
   let searchedTasks = [];
 
+
+  //Logic cases
   if (!searchvalue.length > 0) {
     searchedTasks = tasks;
   } else {
@@ -42,6 +36,7 @@ function App() {
     })
   }
 
+  //Function to events
   const completeTask = (text) => {
     const index = tasks.findIndex(task => task.text === text);
 
@@ -61,23 +56,15 @@ function App() {
   }
 
   return (
-    <React.Fragment>
-      <TodoCounter completedTasks={completedTasks} total={totalTasks} />
-      <TodoSearch
-        searchvalue={searchvalue}
-        setSearchvalue={setSearchvalue}
-      />
-      <TodoList>
-        {searchedTasks.map(task => (
-          <TodoItem
-            key={task.text} text={task.text} completed={task.completed}
-            onComplete={() => completeTask(task.text)}
-            onDelete={() => deleteTask(task.text)}
-          />
-        ))}
-      </TodoList>
-      <TodoButton />
-    </React.Fragment>
+    <AppUi
+    completedTasks={completedTasks} 
+    totalTasks={totalTasks}
+    searchedTasks={searchedTasks}
+    searchvalue={searchvalue}
+    setSearchvalue={setSearchvalue}
+    completeTask={completeTask}
+    deleteTask={deleteTask}
+    />
   );
 }
 
