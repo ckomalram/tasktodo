@@ -9,14 +9,8 @@ const defaultTasks = [
   { text: 'Cocinar', completed: false },
 ];
 
-// provider y consumer
-/**
- * Provider para envolver la app completa
- * consumer para utilizar los metodos que tenga el contexto siempre que lo necesitemos
- */
-const TodoContext = React.createContext();
 
-function TodoProvider(props) {
+function useTasks() {
   //---custom hook useLocalStorage
   // Cuando se va retornar más de 1 esdo y 1 metodo en el custom hook se recomienda usar objetos
   const { items: tasks, saveItems: setTasks, loading, error } = useLocalStorage('TASKS_V1', defaultTasks);
@@ -99,7 +93,7 @@ function TodoProvider(props) {
 
 
   return (
-    <TodoContext.Provider value={{
+ {
       completedTasks,
       totalTasks,
       searchedTasks,
@@ -112,10 +106,7 @@ function TodoProvider(props) {
       error,
       openModal,
       setOpenModal
-    }}>
-      {props.children}
-    </TodoContext.Provider >
-  );
+    } )
 }
 
-export { TodoContext , TodoProvider}
+export { useTasks}
