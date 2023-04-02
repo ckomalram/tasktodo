@@ -7,6 +7,7 @@ import { TodoList } from '../Components/TodoList';
 import { TodoButton } from '../Components/TodoButton';
 import { TodoContext } from '../Context';
 import { Modal } from '../Modal';
+import { TodoForm } from "../Components/TodoForm";
 
 function AppUi() {
 
@@ -40,7 +41,7 @@ function AppUi() {
             {openModal && (
 
                 <Modal>
-                    <p>Modal Abierdo</p>
+                   <TodoForm/>
                 </Modal>
             )}
 

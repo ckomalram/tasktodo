@@ -17,12 +17,12 @@ const defaultTasks = [
 const TodoContext = React.createContext();
 
 function TodoProvider(props) {
-  // custom hook useLocalStorage
+  //---custom hook useLocalStorage
   // Cuando se va retornar más de 1 esdo y 1 metodo en el custom hook se recomienda usar objetos
   const { items: tasks, saveItems: setTasks, loading, error } = useLocalStorage('TASKS_V1', defaultTasks);
 
 
-  // States
+  //----States
   const [searchvalue, setSearchvalue] = React.useState('');
   const [openModal, setOpenModal] = React.useState(false);
 
@@ -31,7 +31,17 @@ function TodoProvider(props) {
   const totalTasks = tasks.length;
   let searchedTasks = [];
 
-  //Function to events
+  //----Function to events
+
+    // Función para añadir un nuevo TODO
+    const addTask = (text) => {
+      const newTasks = [...tasks];
+      newTasks.push({
+        completed: false,
+        text,
+      });
+      setTasks(newTasks);
+    };
 
   const completeTask = (text) => {
     const index = tasks.findIndex(task => task.text === text);
@@ -51,7 +61,8 @@ function TodoProvider(props) {
     // tasks[index] =  { text: tasks[index].text, completed: true };
   }
 
-  //Logic cases
+  //----Logic cases
+
   if (!searchvalue.length > 0) {
     searchedTasks = tasks;
   } else {
@@ -67,9 +78,9 @@ function TodoProvider(props) {
 
 
   //Funcion temporal...
-  const addTasks = () => {
-    setTasks(defaultTasks);
-  }
+  // const addTasks = () => {
+  //   setTasks(defaultTasks);
+  // }
 
   /**
    * Effects
@@ -96,7 +107,7 @@ function TodoProvider(props) {
       setSearchvalue,
       completeTask,
       deleteTask,
-      addTasks,
+      addTask,
       loading,
       error,
       openModal,
