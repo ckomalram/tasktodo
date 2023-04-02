@@ -6,6 +6,7 @@ import { TodoSearch } from '../Components/TodoSearch';
 import { TodoList } from '../Components/TodoList';
 import { TodoButton } from '../Components/TodoButton';
 import { TodoContext } from '../Context';
+import { Modal } from '../Modal';
 
 function AppUi() {
 
@@ -13,12 +14,13 @@ function AppUi() {
         loading,
         searchedTasks,
         completeTask,
-        deleteTask
+        deleteTask, openModal, setOpenModal
     } = React.useContext(TodoContext);
 
     return (
 
         <React.Fragment>
+
             <TodoCounter />
             <TodoSearch />
 
@@ -35,7 +37,15 @@ function AppUi() {
                 ))}
             </TodoList>
 
-            <TodoButton onAddTasks={() => console.log('Agregando tasks')} />
+            {openModal && (
+
+                <Modal>
+                    <p>Modal Abierdo</p>
+                </Modal>
+            )}
+
+
+            <TodoButton onOpenModal={setOpenModal} />
         </React.Fragment>
 
     );

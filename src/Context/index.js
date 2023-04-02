@@ -24,6 +24,7 @@ function TodoProvider(props) {
 
   // States
   const [searchvalue, setSearchvalue] = React.useState('');
+  const [openModal, setOpenModal] = React.useState(false);
 
   //Variables
   const completedTasks = tasks.filter(task => task.completed).length;
@@ -97,7 +98,9 @@ function TodoProvider(props) {
       deleteTask,
       addTasks,
       loading,
-      error
+      error,
+      openModal,
+      setOpenModal
     }}>
       {props.children}
     </TodoContext.Provider >

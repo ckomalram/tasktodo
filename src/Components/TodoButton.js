@@ -4,7 +4,7 @@ import '../Styles/TodoButton.css'
 function TodoButton(props) {
     const onClickAdd = () => {
         // alert('Abrir modal de ADD...');
-        props.onAddTasks();
+        props.onOpenModal(true);
     };
 
     return (
