@@ -14,7 +14,8 @@ const defaultTasks = [
 function App() {
 
   // custom hook useLocalStorage
-  const [tasks, setTasks] = useLocalStorage('TASKS_V1', []);
+  // Cuando se va retornar más de 1 esdo y 1 metodo en el custom hook se recomienda usar objetos
+  const {items: tasks, saveItems: setTasks, loading , error} = useLocalStorage('TASKS_V1', []);
 
 
   // States
@@ -24,21 +25,6 @@ function App() {
   const completedTasks = tasks.filter(task => task.completed).length;
   const totalTasks = tasks.length;
   let searchedTasks = [];
-
-
-  //Logic cases
-  if (!searchvalue.length > 0) {
-    searchedTasks = tasks;
-  } else {
-    searchedTasks = tasks.filter(task => {
-
-      const taskText = task.text.toLowerCase();
-      const searchText = searchvalue.toLowerCase();
-
-      return taskText.includes(searchText);
-
-    })
-  }
 
   //Function to events
 
@@ -61,10 +47,40 @@ function App() {
     // tasks[index] =  { text: tasks[index].text, completed: true };
   }
 
+  //Logic cases
+  if (!searchvalue.length > 0) {
+    searchedTasks = tasks;
+  } else {
+    searchedTasks = tasks.filter(task => {
+
+      const taskText = task.text.toLowerCase();
+      const searchText = searchvalue.toLowerCase();
+
+      return taskText.includes(searchText);
+
+    })
+  }
+
+
   //Funcion temporal...
   const addTasks = () => {
     setTasks(defaultTasks);
   }
+
+  /**
+   * Effects
+   *  Si tiene segundo argumento el useeffect solo se renderizará una vez.
+   * Cada vez que cambie los valores que se mandan en el useeffect se debe volver a renderizar
+    */
+
+  // console.log('antes Codigo del useeffect');
+
+
+  //   React.useEffect(()=> {
+  //     console.log('!!Ejecutando Codigo del useeffect');
+  //   },[totalTasks]);
+
+  // console.log('Luego Codigo del useeffect');  
 
   return (
     <AppUi
@@ -76,6 +92,8 @@ function App() {
       completeTask={completeTask}
       deleteTask={deleteTask}
       addTasks={addTasks}
+      loading={loading}
+      error={error}
     />
   );
 }

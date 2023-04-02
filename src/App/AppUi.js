@@ -14,7 +14,9 @@ function AppUi({
     setSearchvalue,
     completeTask,
     deleteTask,
-    addTasks
+    addTasks,
+    loading,
+    error
 }) {
     return (
 
@@ -25,6 +27,9 @@ function AppUi({
                 setSearchvalue={setSearchvalue}
             />
             <TodoList>
+                {error && <p>Ocurrio un error...</p>}
+                {loading && <p>Estamos cargando....</p>}
+                {(!loading && !searchedTasks.length ) && <p>Crea tu primer TASK</p>}
                 {searchedTasks.map(task => (
                     <TodoItem
                         key={task.text} text={task.text} completed={task.completed}
